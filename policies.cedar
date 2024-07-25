@@ -14,7 +14,6 @@ forbid (
   action == Action::"DeleteTask",
   resource
 )
-
 unless { resource.owner == principal || principal in resource.editors };
 
 //---task 1---

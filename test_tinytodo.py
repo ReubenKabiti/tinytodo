@@ -74,7 +74,7 @@ class TinyTodoTest(unittest.TestCase):
         set_user(emina)
         create_list("my_tasks")
         create_task(0, "first_task")
-        self.assert_in_stdout("Task Deleted", lambda : delete_task(emina, 0, 0))
+        self.assert_in_stdout("Task Deleted", lambda : delete_task(0, 0))
 
     def test_editor_delete_task(self):
         set_user(emina)
@@ -83,4 +83,12 @@ class TinyTodoTest(unittest.TestCase):
         share_list(0, aaron, False)
         set_user(aaron)
         self.assert_in_stdout("Task Deleted", lambda : delete_task(0, 0))
+
+    # def test_other_user_delete_task(self):
+    #     set_user(emina)
+    #     create_list("my_tasks")
+    #     create_task(0, "first_task")
+    #     set_user(aaron)
+
+    #     self.assert_in_stdout("Task Deleted", lambda : delete_task(0, 0))
 

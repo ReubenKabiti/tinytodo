@@ -26,3 +26,5 @@ tinytodo/target/*
 
 # Don't commit node_modules in wasm example
 cedar-wasm-example/node_modules
+__pycache__
+target
