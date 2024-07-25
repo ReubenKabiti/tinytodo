@@ -74,3 +74,11 @@ class TinyTodoTest(unittest.TestCase):
         create_list(emina, "my_tasks")
         create_task(emina, 0, "first_task")
         self.assert_in_stdout("Task Deleted", lambda : delete_task(emina, 0, 0))
+
+    def test_editor_delete_task(self):
+        create_list(emina, "my_tasks")
+        create_task(emina, 0, "first_task")
+        share_list(emina, 0, aaron, False)
+        set_user(aaron)
+        self.assert_in_stdout("Task Deleted", lambda : delete_task(0, 0))
+
