@@ -72,23 +72,22 @@ class TinyTodoTest(unittest.TestCase):
 
     def test_owner_delete_task(self):
         set_user(emina)
-        create_list("my_tasks")
-        create_task(0, "first_task")
+        create_list("f")
+        create_task(0, "b")
         self.assert_in_stdout("Task Deleted", lambda : delete_task(0, 0))
 
     def test_editor_delete_task(self):
         set_user(emina)
-        create_list("my_tasks")
-        create_task(0, "first_task")
+        create_list("f")
+        create_task(0, "b")
         share_list(0, aaron, False)
         set_user(aaron)
         self.assert_in_stdout("Task Deleted", lambda : delete_task(0, 0))
 
-    # def test_other_user_delete_task(self):
-    #     set_user(emina)
-    #     create_list("my_tasks")
-    #     create_task(0, "first_task")
-    #     set_user(aaron)
-
-    #     self.assert_in_stdout("Task Deleted", lambda : delete_task(0, 0))
+    def test_other_user_delete_task(self):
+        set_user(emina)
+        create_list("foo")
+        create_task(0, "bar")
+        set_user(aaron)
+        self.assert_in_stdout("Access denied. User aaron is not authorized to Delete Task on [0,0]", lambda : delete_task(0, 0))
 
