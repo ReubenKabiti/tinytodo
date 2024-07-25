@@ -15,9 +15,9 @@ forbid (
   resource
 )
 
-//---task 1---
- 
 unless { resource.owner == principal || principle in resource.editors };
+
+//---task 1---
 
 // Policy 1: A User can perform any action on a List they own
 permit (
