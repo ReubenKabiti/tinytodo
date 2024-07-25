@@ -15,7 +15,7 @@ forbid (
   resource
 )
 
-unless { resource.owner == principal || principle in resource.editors };
+unless { resource.owner == principal || principal in resource.editors };
 
 //---task 1---
 
