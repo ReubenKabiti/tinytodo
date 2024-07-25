@@ -71,10 +71,6 @@ class TinyTodoTest(unittest.TestCase):
         self.assert_in_stdout("1: [ ] bar", lambda : get_list(0))
 
     def test_owner_delete_task(self):
-
-        def del_task():
-            create_list(emina, "my_tasks")
-            create_task(emina, 0, "first_task")
-            delete_task(emina, 0, 0)
-
-        self.assert_in_stdout("Task Deleted", del_task)
+        create_list(emina, "my_tasks")
+        create_task(emina, 0, "first_task")
+        self.assert_in_stdout("Task Deleted", lambda : delete_task(emina, 0, 0))
