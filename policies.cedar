@@ -5,12 +5,18 @@ permit (
     resource == Application::"TinyTodo"
 );
 
+// ---task 1---
+// allows a user to delete a task only if they are the 
+// owner of the list or have been assigned the role of 'editor' for that list.
+
 forbid ( 
   principal,
   action == Action::"DeleteTask",
   resource
 )
 
+//---task 1---
+ 
 unless { resource.owner == principal || principle in resource.editors };
 
 // Policy 1: A User can perform any action on a List they own
